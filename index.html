@@ -566,16 +566,16 @@ PREMIUM FULLSCREEN VIEWER
 </div>
 
                 <!-- Item 1: Money -->
-                <div class="portfolio-item group relative rounded-xl bg-panelDark p-2 thumb-card" data-category="money">
-                    <div class="relative aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-green-900 to-black">
-                        <!-- Mock Thumbnail Visual -->
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <h3 class="text-3xl font-black text-green-400 drop-shadow-2xl rotate-[-5deg] scale-100 group-hover:scale-110 transition-transform duration-500 z-10">$10K/MONTH<br><span class="text-white">BLUEPRINT</span></h3>
-                            <div class="absolute -right-10 bottom-0 text-9xl opacity-50 z-0 text-green-500 drop-shadow-[0_0_15px_rgba(34,197,94,0.5)]">💸</div>
-                        </div>
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
-                    </div>
-                </div>
+                <!-- Finance Thumbnail -->
+<div class="portfolio-item group relative rounded-xl bg-panelDark p-2 thumb-card" data-category="money">
+    <div class="relative aspect-video rounded-lg overflow-hidden bg-black">
+        <img src="Thumbnail 3.png"
+             onclick="openImage(2)"
+             alt="Finance YouTube Thumbnail"
+             class="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-500 z-0">
+        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300 z-10 pointer-events-none"></div>
+    </div>
+</div>
 
                 <!-- Item 2: Gaming -->
                 <div class="portfolio-item group relative rounded-xl bg-panelDark p-2 thumb-card" data-category="gaming">
@@ -993,10 +993,9 @@ window.addEventListener('load', () => {
 
 });
 const images = [
-
     "thumbnail 1.jpg",
-    "Thumnail 2.jpg"
-
+    "Thumnail 2.jpg",
+    "Thumbnail 3.png"
 ];
 
 let currentImage = 0;
