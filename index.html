@@ -808,52 +808,60 @@ PREMIUM FULLSCREEN VIEWER
     </footer>
 
     <!-- Contact Modal -->
-    <form id="form" class="space-y-4">
-    <input type="hidden" name="access_key" value="9870b479-2fb9-45a4-8d60-55da60969734">
-    <input type="hidden" name="subject" value="New Portfolio Inquiry from AshikArtistry">
-    <input type="hidden" name="from_name" value="AshikArtistry Website">
+    <!-- Contact Modal -->
+<div id="contactModal"
+     class="fixed inset-0 z-[9999] hidden opacity-0 transition-opacity duration-300 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
 
-    <div>
-        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Name</label>
-        <input
-            type="text"
-            name="name"
-            required
-            class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-primaryRed transition-colors">
+    <div id="modalContent"
+         class="w-full max-w-2xl bg-panelDark border border-white/10 rounded-2xl p-8 scale-95 transition-transform duration-300 relative">
+
+        <!-- Close Button -->
+        <button onclick="closeModal()"
+                class="absolute top-4 right-4 text-3xl text-gray-400 hover:text-white transition-colors">
+            &times;
+        </button>
+
+        <h3 class="text-3xl font-black mb-2">Let's Work Together</h3>
+        <p class="text-gray-400 mb-8">
+            Tell me about your channel and what kind of thumbnail you need.
+        </p>
+
+        <form id="form" class="space-y-4">
+            <input type="hidden" name="access_key" value="9870b479-2fb9-45a4-8d60-55da60969734">
+            <input type="hidden" name="subject" value="New Portfolio Inquiry from AshikArtistry">
+            <input type="hidden" name="from_name" value="AshikArtistry Website">
+
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Name</label>
+                <input type="text" name="name" required
+                    class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-primaryRed transition-colors">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Email</label>
+                <input type="email" name="email" required
+                    class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-primaryRed transition-colors">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Channel Link</label>
+                <input type="url" name="channel_link"
+                    class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-primaryRed transition-colors">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Message</label>
+                <textarea name="message" required rows="3"
+                    class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-primaryRed transition-colors resize-none"></textarea>
+            </div>
+
+            <button type="submit"
+                class="w-full bg-primaryRed text-white font-bold py-4 rounded hover:bg-red-700 transition-colors uppercase tracking-wider mt-4">
+                Send Message
+            </button>
+        </form>
     </div>
-
-    <div>
-        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Email</label>
-        <input
-            type="email"
-            name="email"
-            required
-            class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-primaryRed transition-colors">
-    </div>
-
-    <div>
-        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Channel Link</label>
-        <input
-            type="url"
-            name="channel_link"
-            class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-primaryRed transition-colors">
-    </div>
-
-    <div>
-        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Message</label>
-        <textarea
-            name="message"
-            required
-            rows="3"
-            class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-primaryRed transition-colors resize-none"></textarea>
-    </div>
-
-    <button
-        type="submit"
-        class="w-full bg-primaryRed text-white font-bold py-4 rounded hover:bg-red-700 transition-colors uppercase tracking-wider mt-4">
-        Send Message
-    </button>
-</form>
+</div>
 
     <!-- JavaScript -->
     <script>
