@@ -15,6 +15,8 @@
     
     <!-- Tailwind Config for Custom Colors -->
     <script>
+
+        
         tailwind.config = {
             theme: {
                 extend: {
@@ -451,6 +453,190 @@ PREMIUM FULLSCREEN VIEWER
         #contactModal {
             backdrop-filter: blur(5px);
         }
+        /* ==========================================
+   QUICK CONTACT MODAL - PREMIUM THEME
+   Matches AshikArtistry Dark + Red Design
+========================================== */
+
+/* Modal backdrop */
+#contactOptionsModal {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Modal container */
+#contactOptionsContent {
+    background: linear-gradient(
+        135deg,
+        rgba(26, 26, 26, 0.96),
+        rgba(10, 10, 10, 0.98)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.75),
+        0 0 80px rgba(255, 0, 0, 0.08);
+}
+
+/* Subtle red glow behind modal */
+#contactOptionsContent::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 1rem;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 0, 0, 0.25),
+        transparent 35%,
+        transparent 65%,
+        rgba(255, 215, 0, 0.12)
+    );
+    z-index: -1;
+    filter: blur(18px);
+    opacity: 0.65;
+}
+
+/* Contact cards */
+#contactOptionsContent a {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.03),
+        rgba(255, 255, 255, 0.015)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition:
+        transform 0.35s cubic-bezier(.16, 1, .3, 1),
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+}
+
+/* Animated glow sweep */
+#contactOptionsContent a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -130%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.06),
+        transparent
+    );
+    transition: left 0.7s ease;
+}
+
+/* Red glow border */
+#contactOptionsContent a::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 0.75rem;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 0, 0, 0.35),
+        transparent 45%,
+        transparent 55%,
+        rgba(255, 215, 0, 0.18)
+    );
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    filter: blur(10px);
+}
+
+/* Hover effect */
+#contactOptionsContent a:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: rgba(255, 0, 0, 0.35);
+    background: linear-gradient(
+        180deg,
+        rgba(255, 0, 0, 0.04),
+        rgba(255, 255, 255, 0.02)
+    );
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.45),
+        0 0 30px rgba(255, 0, 0, 0.12);
+}
+
+#contactOptionsContent a:hover::before {
+    left: 130%;
+}
+
+#contactOptionsContent a:hover::after {
+    opacity: 1;
+}
+
+/* Icon animation */
+#contactOptionsContent a .text-3xl {
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+#contactOptionsContent a:hover .text-3xl {
+    transform: scale(1.15) rotate(-4deg);
+    filter: drop-shadow(0 0 12px rgba(255, 0, 0, 0.35));
+}
+
+/* Heading inside cards */
+#contactOptionsContent a h4 {
+    transition: color 0.3s ease;
+}
+
+#contactOptionsContent a:hover h4 {
+    color: #ffffff;
+}
+
+/* Close button */
+#contactOptionsContent button {
+    width: 52px;
+    height: 52px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    transition:
+        transform 0.35s cubic-bezier(.16, 1, .3, 1),
+        background 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+#contactOptionsContent button:hover {
+    transform: rotate(90deg) scale(1.08);
+    background: rgba(255, 0, 0, 0.12);
+    color: #ff4d4d;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.22);
+}
+
+/* Mobile optimization */
+@media (max-width: 640px) {
+    #contactOptionsContent {
+        padding: 2rem 1.25rem;
+    }
+
+    #contactOptionsContent a {
+        padding: 1.25rem;
+    }
+}
+.contact-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: brightness(1);
+    transition: transform 0.35s ease;
+}
+
+#contactOptionsContent a:hover .contact-logo {
+    transform: scale(1.12);
+}
     </style>
 </head>
 <body class="antialiased selection:bg-primaryRed selection:text-white">
@@ -496,9 +682,19 @@ PREMIUM FULLSCREEN VIEWER
                 <a href="#case-study" class="hover:text-primaryRed transition-colors">Case Study</a>
                 <a href="#process" class="hover:text-primaryRed transition-colors">Process</a>
             </div>
-            <button onclick="openModal()" class="px-9 py-4 bg-white text-black font-bold rounded hover:bg-primaryRed hover:text-white transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-glow-red uppercase text-base tracking-wide">
-                Hire Me
-            </button>
+            <div class="hidden md:flex items-center gap-3">
+    <!-- Secondary CTA -->
+    <button onclick="openContactOptions()"
+    class="px-8 py-4 border border-white/20 text-white font-bold rounded hover:border-white hover:bg-white hover:text-black transition-all uppercase text-base tracking-wide">
+    Contact Me
+</button>
+
+    <!-- Primary CTA -->
+   <button onclick="openContactOptions()"
+        class="px-9 py-4 bg-white text-black font-bold rounded hover:bg-primaryRed hover:text-white transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-glow-red uppercase text-base tracking-wide">
+        Hire Me
+    </button>
+</div>
         </div>
     </nav>
 
@@ -834,25 +1030,29 @@ PREMIUM FULLSCREEN VIEWER
             <div>
                 <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Name</label>
                 <input type="text" name="name" required
-                    class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-primaryRed transition-colors">
+    placeholder="Ex: John Smith"
+    class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:border-primaryRed transition-colors">
             </div>
 
             <div>
                 <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Email</label>
                 <input type="email" name="email" required
-                    class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-primaryRed transition-colors">
+    placeholder="Ex: johnsmith@gmail.com"
+    class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:border-primaryRed transition-colors">
             </div>
 
             <div>
                 <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Channel Link</label>
                 <input type="url" name="channel_link"
-                    class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-primaryRed transition-colors">
+    placeholder="Ex: https://www.youtube.com/@YourChannel"
+    class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:border-primaryRed transition-colors">
             </div>
 
             <div>
                 <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Message</label>
-                <textarea name="message" required rows="3"
-                    class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-primaryRed transition-colors resize-none"></textarea>
+               <textarea name="message" required rows="3"
+    placeholder="Ex: I need a high-CTR thumbnail designed for my upcoming YouTube video."
+    class="w-full bg-black border border-white/10 rounded px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:border-primaryRed transition-colors resize-none"></textarea>
             </div>
 
             <button type="submit"
@@ -860,6 +1060,103 @@ PREMIUM FULLSCREEN VIEWER
                 Send Message
             </button>
         </form>
+    </div>
+</div>
+
+<!-- Quick Contact Modal -->
+<div id="contactOptionsModal"
+     class="fixed inset-0 z-[9999] hidden opacity-0 transition-opacity duration-300 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+
+    <div id="contactOptionsContent"
+         class="w-full max-w-3xl bg-panelDark border border-white/10 rounded-2xl p-8 scale-95 transition-transform duration-300 relative">
+
+        <!-- Close Button -->
+        <button onclick="closeContactOptions()"
+                class="absolute top-4 right-4 text-3xl text-gray-400 hover:text-white transition-colors">
+            &times;
+        </button>
+
+        <!-- Header -->
+        <h3 class="text-3xl font-black mb-2">Contact Me</h3>
+        <p class="text-gray-400 mb-8">
+            Choose your preferred way to get in touch.
+        </p>
+
+        <!-- Contact Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+            <!-- Email -->
+            <a href="mailto:yourname@gmail.com"
+               class="group bg-black border border-white/10 rounded-xl p-6 hover:border-primaryRed hover:-translate-y-1 transition-all duration-300">
+               <img
+    src="https://cdn.simpleicons.org/maildotru/ffffff"
+    alt="Email"
+    class="contact-logo mb-3">
+                <h4 class="font-bold text-lg mb-1">Email</h4>
+                <p class="text-sm text-gray-400">yourname@gmail.com</p>
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/8801XXXXXXXXX"
+               target="_blank"
+               class="group bg-black border border-white/10 rounded-xl p-6 hover:border-primaryRed hover:-translate-y-1 transition-all duration-300">
+               <img
+    src="https://cdn.simpleicons.org/whatsapp/25D366"
+    alt="WhatsApp"
+    class="contact-logo mb-3">
+                <h4 class="font-bold text-lg mb-1">WhatsApp</h4>
+                <p class="text-sm text-gray-400">Chat instantly</p>
+            </a>
+
+            <!-- Telegram -->
+            <a href="https://t.me/yourusername"
+               target="_blank"
+               class="group bg-black border border-white/10 rounded-xl p-6 hover:border-primaryRed hover:-translate-y-1 transition-all duration-300">
+                <img
+    src="https://cdn.simpleicons.org/telegram/229ED9"
+    alt="Telegram"
+    class="contact-logo mb-3">
+                <h4 class="font-bold text-lg mb-1">Telegram</h4>
+                <p class="text-sm text-gray-400">@yourusername</p>
+            </a>
+
+            <!-- Discord -->
+            <a href="https://discord.com/users/YOUR_DISCORD_ID"
+               target="_blank"
+               class="group bg-black border border-white/10 rounded-xl p-6 hover:border-primaryRed hover:-translate-y-1 transition-all duration-300">
+                <img
+    src="https://cdn.simpleicons.org/discord/5865F2"
+    alt="Discord"
+    class="contact-logo mb-3">
+                <h4 class="font-bold text-lg mb-1">Discord</h4>
+                <p class="text-sm text-gray-400">Add me on Discord</p>
+            </a>
+
+            <!-- Upwork -->
+            <a href="https://www.upwork.com/freelancers/~YOURPROFILE"
+               target="_blank"
+               class="group bg-black border border-white/10 rounded-xl p-6 hover:border-primaryRed hover:-translate-y-1 transition-all duration-300">
+                <img
+    src="https://cdn.simpleicons.org/upwork/6FDA44"
+    alt="Upwork"
+    class="contact-logo mb-3">
+                <h4 class="font-bold text-lg mb-1">Upwork</h4>
+                <p class="text-sm text-gray-400">Hire via Upwork</p>
+            </a>
+
+            <!-- Gmail -->
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yourname@gmail.com"
+               target="_blank"
+               class="group bg-black border border-white/10 rounded-xl p-6 hover:border-primaryRed hover:-translate-y-1 transition-all duration-300">
+                <img
+    src="https://cdn.simpleicons.org/gmail/EA4335"
+    alt="Gmail"
+    class="contact-logo mb-3">
+                <h4 class="font-bold text-lg mb-1">Gmail</h4>
+                <p class="text-sm text-gray-400">Compose in Gmail</p>
+            </a>
+
+        </div>
     </div>
 </div>
 
@@ -957,6 +1254,38 @@ PREMIUM FULLSCREEN VIEWER
                 document.body.style.overflow = 'auto'; // Restore scrolling
             }, 300);
         }
+        // Quick Contact Modal Elements
+const contactOptionsModal = document.getElementById('contactOptionsModal');
+const contactOptionsContent = document.getElementById('contactOptionsContent');
+
+function openContactOptions() {
+    contactOptionsModal.classList.remove('hidden');
+
+    // Trigger reflow for smooth animation
+    void contactOptionsModal.offsetWidth;
+
+    contactOptionsModal.classList.remove('opacity-0');
+    contactOptionsContent.classList.remove('scale-95');
+
+    document.body.style.overflow = 'hidden';
+}
+
+function closeContactOptions() {
+    contactOptionsModal.classList.add('opacity-0');
+    contactOptionsContent.classList.add('scale-95');
+
+    setTimeout(() => {
+        contactOptionsModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }, 300);
+}
+
+// Close when clicking outside the modal
+contactOptionsModal.addEventListener('click', (e) => {
+    if (e.target === contactOptionsModal) {
+        closeContactOptions();
+    }
+});
 
         const form = document.getElementById('form');
 
@@ -1148,6 +1477,7 @@ document.addEventListener('keydown', (e) => {
         closeImage();
     }
 });
+
 
     </script>
     
