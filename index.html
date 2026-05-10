@@ -40,6 +40,313 @@
     </script>
 
     <style>
+
+    /* ==========================================
+   PREMIUM SERVICES SECTION
+   Cinematic glassmorphism cards for the
+   "What I Can Design" section
+========================================== */
+
+.service-card {
+    position: relative;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    min-height: 320px;
+    overflow: hidden;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.035),
+        rgba(255, 255, 255, 0.015)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    transition:
+        transform 0.45s cubic-bezier(.16, 1, .3, 1),
+        border-color 0.45s ease,
+        box-shadow 0.45s ease,
+        background 0.45s ease;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.service-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at top right,
+        rgba(255, 0, 0, 0.08),
+        transparent 55%
+    );
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+}
+
+.service-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -130%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.05),
+        transparent
+    );
+    transition: left 0.75s ease;
+    pointer-events: none;
+}
+
+.service-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(255, 0, 0, 0.35);
+
+    background: linear-gradient(
+        180deg,
+        rgba(255, 0, 0, 0.03),
+        rgba(255, 255, 255, 0.02)
+    );
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.55),
+        0 0 40px rgba(255, 0, 0, 0.10);
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+.service-card:hover::after {
+    left: 130%;
+}
+
+/* Featured card */
+.service-card-featured {
+    border-color: rgba(255, 0, 0, 0.22);
+    box-shadow:
+        0 0 35px rgba(255, 0, 0, 0.08);
+}
+
+/* Small badge */
+.service-badge {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    padding: 0.35rem 0.75rem;
+
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+
+    border-radius: 9999px;
+
+    background: rgba(255, 0, 0, 0.10);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 0, 0, 0.18);
+}
+
+/* Large background number */
+.service-number {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+
+    font-size: 4.25rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+
+    color: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+}
+
+/* Icon box */
+.service-icon {
+    width: 4rem;
+    height: 4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 1.75rem;
+    border-radius: 1rem;
+    font-size: 1.8rem;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 0, 0, 0.15),
+        rgba(255, 255, 255, 0.03)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    box-shadow:
+        0 0 20px rgba(255, 0, 0, 0.08);
+
+    transition: transform 0.35s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.08) rotate(-4deg);
+}
+
+/* Service title */
+.service-title {
+    font-size: 1.45rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+/* Service description */
+.service-text {
+    font-size: 0.98rem;
+    line-height: 1.9;
+    color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .service-card {
+        min-height: auto;
+        padding: 1.75rem;
+    }
+
+    .service-number {
+        font-size: 3.25rem;
+    }
+
+    .service-title {
+        font-size: 1.3rem;
+    }
+}    
+        
+        /* ==========================================
+   TECH GRID & DOT MATRIX BACKGROUNDS
+   Premium atmospheric utilities for hero,
+   process, CTA, and other cinematic sections.
+========================================== */
+
+/* Subtle technical grid (used for futuristic depth) */
+.tech-grid {
+    background-image:
+        linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+        );
+    background-size: 60px 60px;
+    background-position: center center;
+}
+
+/* Smaller dotted matrix pattern for side textures */
+.dot-matrix {
+    background-image:
+        radial-gradient(
+            rgba(255, 255, 255, 0.08) 1px,
+            transparent 1px
+        );
+    background-size: 24px 24px;
+    background-position: center center;
+}
+
+/* Horizontal cinematic glow line */
+.glow-line-h {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(229, 9, 20, 0.5),
+        transparent
+    );
+}
+
+/* Vertical cinematic glow line */
+.glow-line-v {
+    background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(229, 9, 20, 0.35),
+        transparent
+    );
+}
+
+/* Crosshair UI marker for subtle technical accents */
+.crosshair {
+    position: relative;
+}
+
+.crosshair::before,
+.crosshair::after {
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.crosshair::before {
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.crosshair::after {
+    width: 1px;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+       /* ==========================================
+   CINEMATIC NOISE OVERLAY
+   Add subtle film-grain texture across the
+   entire website for a premium editorial feel.
+========================================== */
+
+.noise-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    pointer-events: none;
+
+    /* Very subtle visibility */
+    opacity: 0.035;
+
+    /* Helps the texture blend naturally */
+    mix-blend-mode: soft-light;
+
+    /* Procedural SVG noise (no external file needed) */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+    /* Keep it crisp and evenly distributed */
+    background-size: 220px 220px;
+
+    /* Slight animation so the texture feels alive */
+    animation: noiseShift 8s steps(8) infinite;
+    will-change: transform;
+}
+
+@keyframes noiseShift {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(-1%, 1%); }
+    50%  { transform: translate(1%, -1%); }
+    75%  { transform: translate(-0.5%, 0.5%); }
+    100% { transform: translate(0, 0); }
+} 
         /* GALLERY BUTTONS */
 
 .gallery-btn {
@@ -637,9 +944,13 @@ PREMIUM FULLSCREEN VIEWER
 #contactOptionsContent a:hover .contact-logo {
     transform: scale(1.12);
 }
+ 
+
     </style>
 </head>
 <body class="antialiased selection:bg-primaryRed selection:text-white">
+    <!-- Place immediately after the opening <body> tag -->
+<div class="noise-overlay"></div>
 <!-- =========================
         LOADER
 ========================= -->
@@ -700,11 +1011,52 @@ PREMIUM FULLSCREEN VIEWER
 
     <!-- Hero Section -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <!-- Background decorative elements -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primaryRed/20 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accentGold/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <!-- ================= HERO BACKGROUND ELEMENTS ================= -->
 
-        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+<!-- Technical Grid -->
+<div class="absolute inset-0 tech-grid opacity-40
+            [mask-image:radial-gradient(ellipse_65%_65%_at_50%_45%,black_15%,transparent_100%)]">
+</div>
+
+<!-- Main Red Cinematic Glow -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2
+            w-[120vw] h-[70vh]
+            bg-[radial-gradient(ellipse_at_top,rgba(229,9,20,0.10)_0%,transparent_72%)]">
+</div>
+
+<!-- Secondary White Ambient Glow -->
+<div class="absolute top-1/3 left-1/2 -translate-x-1/2
+            w-[90vw] h-[50vh]
+            bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)]">
+</div>
+
+<!-- Left Crosshair -->
+<div class="absolute top-1/4 left-[10%] w-4 h-4 crosshair opacity-25"></div>
+
+<!-- Right Crosshair -->
+<div class="absolute bottom-1/4 right-[10%] w-4 h-4 crosshair opacity-25"></div>
+
+<!-- Vertical Glow Line -->
+<div class="absolute top-1/2 right-[5%] w-[1px] h-32 glow-line-v opacity-35"></div>
+
+<!-- Horizontal Glow Line -->
+<div class="absolute top-[22%] left-0 w-full h-[1px] glow-line-h opacity-20"></div>
+
+<!-- Left Dot Matrix Texture -->
+<div class="absolute inset-y-0 left-0 w-[20vw] dot-matrix
+            [mask-image:linear-gradient(to_right,black,transparent)]
+            opacity-20">
+</div>
+
+<!-- Right Dot Matrix Texture -->
+<div class="absolute inset-y-0 right-0 w-[20vw] dot-matrix
+            [mask-image:linear-gradient(to_left,black,transparent)]
+            opacity-20">
+</div>
+
+<!-- ================= END HERO BACKGROUND ELEMENTS ================= -->
+
+      <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
             <h2 class="text-accentGold font-bold tracking-widest uppercase mb-4 text-sm md:text-base">Stand out in the feed</h2>
             <h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-6">
                 High CTR<br/>
@@ -726,7 +1078,7 @@ PREMIUM FULLSCREEN VIEWER
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="py-24 bg-bgDark border-t border-white/5 relative">
+   <section id="portfolio" class="py-24 bg-bgDark border-t border-white/5 relative">
         <div class="w-full px-20 2xl:px-32">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-black mb-4 uppercase">My Work</h2>
@@ -895,15 +1247,111 @@ PREMIUM FULLSCREEN VIEWER
             </div>
         </div>
     </section>
+    
+     
+    <!-- Left Dot Matrix -->
+    <div class="absolute inset-y-0 left-0 w-[18vw] dot-matrix
+                [mask-image:linear-gradient(to_right,black,transparent)] opacity-20">
+    </div>
 
-    <!-- Process Section -->
-   <section id="portfolio"  class="py-24 bg-bgDark border-t border-white/5 relative">
-        <div class="w-full max-w-[1600px] mx-auto px-10">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 uppercase">My Process</h2>
-                <div class="w-24 h-1 bg-primaryRed mx-auto mb-8"></div>
+ <!-- Right Dot Matrix -->
+<div class="absolute inset-y-0 right-0 w-[18vw] dot-matrix
+            [mask-image:linear-gradient(to_left,black,transparent)] opacity-20">
+</div>
+
+</section>
+<!-- Services Section -->
+<section id="services" class="py-24 bg-[#111] border-t border-white/5 relative overflow-hidden">
+
+    <!-- Background Atmosphere -->
+    <div class="absolute inset-0 tech-grid opacity-20"></div>
+
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[100vw] h-[50vh]
+                bg-[radial-gradient(ellipse_at_top,rgba(229,9,20,0.08)_0%,transparent_70%)]">
+    </div>
+
+    <!-- Left Dot Matrix -->
+    <div class="absolute inset-y-0 left-0 w-[18vw] dot-matrix
+                [mask-image:linear-gradient(to_right,black,transparent)] opacity-20">
+    </div>
+
+    <!-- Right Dot Matrix -->
+    <div class="absolute inset-y-0 right-0 w-[18vw] dot-matrix
+                [mask-image:linear-gradient(to_left,black,transparent)] opacity-20">
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+
+        <!-- Section Heading -->
+        <div class="text-center mb-16">
+            <p class="text-sm font-bold uppercase tracking-[0.35em] text-gray-500 mb-4">
+                Services
+            </p>
+
+            <h2 class="text-4xl md:text-6xl font-black tracking-tight mb-5 uppercase">
+                What I Can <span class="text-primaryRed">Design</span>
+            </h2>
+
+            <div class="w-24 h-1 bg-primaryRed mx-auto rounded-full mb-6 shadow-[0_0_20px_rgba(255,0,0,0.35)]"></div>
+
+            <p class="max-w-2xl mx-auto text-gray-400 text-lg leading-relaxed">
+                Strategic visuals designed to increase click-through rate, strengthen branding,
+                and help creators stand out in competitive niches.
+            </p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+            <div class="service-card group">
+                <div class="service-number">01</div>
+                <div class="service-icon">🎯</div>
+                <h3 class="service-title">YouTube Thumbnail Design</h3>
+                <p class="service-text">
+                    High-CTR thumbnails engineered to capture attention and maximize clicks.
+                </p>
             </div>
 
+            <div class="service-card group">
+                <div class="service-number">02</div>
+                <div class="service-icon">♻️</div>
+                <h3 class="service-title">Thumbnail Redesign</h3>
+                <p class="service-text">
+                    Transform underperforming thumbnails into clean, strategic visuals.
+                </p>
+            </div>
+
+            <div class="service-card group">
+                <div class="service-number">03</div>
+                <div class="service-icon">📱</div>
+                <h3 class="service-title">Social Media Graphics</h3>
+                <p class="service-text">
+                    Scroll-stopping graphics for Instagram, X, LinkedIn, and other platforms.
+                </p>
+            </div>
+
+            <div class="service-card service-card-featured group">
+                <div class="service-badge">Specialized</div>
+                <div class="service-number">04</div>
+                <div class="service-icon">₿</div>
+                <h3 class="service-title">Web3 & Crypto Visuals</h3>
+                <p class="service-text">
+                    Professional graphics for blockchain projects, airdrops, token launches,
+                    and crypto communities.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section id="process" class="py-24 bg-bgDark border-t border-white/5 relative">
+    <div class="w-full max-w-[1600px] mx-auto px-10">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-black mb-4 uppercase">My Process</h2>
+            <div class="w-24 h-1 bg-primaryRed mx-auto mb-8"></div>
+        </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Step 1 -->
                 <div class="bg-panelDark border border-white/10 p-8 rounded-xl relative hover:-translate-y-2 transition-transform duration-300 hover:border-white/30">
