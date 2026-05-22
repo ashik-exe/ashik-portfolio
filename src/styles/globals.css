@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- BASE ---- */
+body {
+  background-color: #0d0d0d;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0d0d0d; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #FF0000; }
+
+/* Selection */
+::selection { background: #FF0000; color: #fff; }
+
+/* ---- TECH GRID & DOT MATRIX ---- */
+.tech-grid {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center center;
+}
+
+.dot-matrix {
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: center center;
+}
+
+.glow-line-h {
+  background: linear-gradient(90deg, transparent, rgba(229,9,20,0.5), transparent);
+}
+
+.glow-line-v {
+  background: linear-gradient(180deg, transparent, rgba(229,9,20,0.35), transparent);
+}
+
+.crosshair { position: relative; }
+.crosshair::before,
+.crosshair::after {
+  content: "";
+  position: absolute;
+  background: rgba(255,255,255,0.18);
+}
+.crosshair::before { width: 100%; height: 1px; top: 50%; left: 0; transform: translateY(-50%); }
+.crosshair::after  { width: 1px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+
+/* ---- NOISE OVERLAY ---- */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+  animation: noiseShift 8s steps(8) infinite;
+  will-change: transform;
+}
+
+@keyframes noiseShift {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-1%, 1%); }
+  50%  { transform: translate(1%, -1%); }
+  75%  { transform: translate(-0.5%, 0.5%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ---- THUMBNAIL GRID HOVER GLOW ---- */
+.thumb-card { position: relative; }
+.thumb-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 0.75rem;
+  background: linear-gradient(45deg, #FF0000, transparent, #FFD700);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.thumb-card:hover::before { opacity: 1; }
+
+/* =========================
+BLOODY RED CURSOR
+========================= */
+
+* {
+  cursor:
+    url('https://cdn.cursors-4u.net/css-previews/night-diamond-bloody-red-horizontal-resize-81507ecb-css.webp')
+    0 0,
+    auto !important;
+}
