@@ -11,11 +11,12 @@ export default function Portfolio({ onOpenImage }) {
     thumbnails[1], // documentary
     thumbnails[2], // money
     thumbnails[3], // money
-    mockItems[0],  // gaming
+    thumbnails[4], // challenge
+    mockItems[0],  // challenge
     mockItems[1],  // tech
     mockItems[2],  // crypto
     mockItems[3],  // social
-    mockItems[4],  // gaming
+    mockItems[4],  // challenge
   ];
 
   const visible = allItems.filter(
@@ -63,7 +64,10 @@ export default function Portfolio({ onOpenImage }) {
                 transition: "opacity 0.3s ease, transform 0.3s ease",
               }}
             >
-              <PortfolioCard item={item} onOpen={onOpenImage} />
+              <PortfolioCard
+  item={item}
+  onOpen={() => onOpenImage(item.id)}
+/>
             </div>
           ))}
         </div>

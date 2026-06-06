@@ -73,19 +73,6 @@ body {
   100% { transform: translate(0, 0); }
 }
 
-/* ---- THUMBNAIL GRID HOVER GLOW ---- */
-.thumb-card { position: relative; }
-.thumb-card::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: 0.75rem;
-  background: linear-gradient(45deg, #FF0000, transparent, #FFD700);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.thumb-card:hover::before { opacity: 1; }
 
 /* =========================
 BLOODY RED CURSOR
@@ -96,4 +83,110 @@ BLOODY RED CURSOR
     url('https://cdn.cursors-4u.net/css-previews/night-diamond-bloody-red-horizontal-resize-81507ecb-css.webp')
     0 0,
     auto !important;
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes gradient-rotate {
+  from {
+    --gradient-angle: 0deg;
+  }
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+.animated-border {
+  position: relative;
+  padding: 2px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.animated-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+
+  background: conic-gradient(
+  from var(--gradient-angle),
+  transparent,
+  #dc2626,
+  #f87171,
+  #dc2626,
+  transparent
+);
+
+  animation: gradient-rotate 4s linear infinite;
+
+  z-index: 0;
+}
+
+.animated-border > * {
+  position: relative;
+  z-index: 1;
+  background: #0a0a0a;
+  border-radius: 18px;
+}
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes cardBorderRotate {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+.animated-border {
+  position: relative;
+  padding: 2px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.animated-border::before {
+  content: "";
+  position: absolute;
+  inset: -100%;
+  background: conic-gradient(
+    from var(--angle),
+    transparent 0deg,
+    transparent 280deg,
+    #dc2626 320deg,
+    #f87171 340deg,
+    transparent 360deg
+  );
+
+  animation: cardBorderRotate s linear infinite;
+}
+
+.animated-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  box-shadow: 0 0 25px rgba(220, 38, 38, 0.25);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.animated-border:hover::after {
+  opacity: 1;
+}
+
+.animated-border > * {
+  position: relative;
+  z-index: 2;
+  background: #111;
+  border-radius: 16px;
 }

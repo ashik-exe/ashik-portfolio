@@ -21,7 +21,10 @@ export default function App() {
   const [contactOptOpen,   setContactOptOpen]   = useState(false);
   const [viewerIndex,      setViewerIndex]      = useState(null);
 
-  const openImage  = (i) => setViewerIndex(i);
+  const openImage = (i) => {
+ 
+  setViewerIndex(i);
+};
   const closeImage = ()  => setViewerIndex(null);
 
   const nextImage  = () =>

@@ -3,6 +3,7 @@ import thumb1 from "../assets/thumb1.jpg";
 import thumb2 from "../assets/thumb2.jpg";
 import thumb3 from "../assets/thumb3.png";
 import thumb4 from "../assets/thumb4.jpg";
+import thumb5 from "../assets/thumb5.jpg";
 export const thumbnails = [
   {
     id: 0,
@@ -35,6 +36,14 @@ export const thumbnails = [
     alt: "Should You Buy Now Thumbnail",
     isReal: true
   },
+
+  {
+    id: 4,
+    image: thumb5,
+    category: "challenge",
+    alt: "Billion Dollar Button Thumbnail",
+    isReal: true
+  }
 ];
 
 // Images used by fullscreen viewer (same order as above)
@@ -43,21 +52,22 @@ export const viewerImages = [
   thumb2,
   thumb3,
   thumb4,
+  thumb5,
 ];
 
 // Mock (CSS-only) items — content rendered in PortfolioCard
 export const mockItems = [
-  { id: "gaming-1",  category: "gaming",       bgClass: "bg-gradient-to-tr from-purple-900 via-indigo-900 to-black",      isReal: false },
+  { id: "challenge-1",  category: "challenge",       bgClass: "bg-gradient-to-tr from-purple-900 via-indigo-900 to-black",      isReal: false },
   { id: "tech-1",    category: "tech",         bgClass: "bg-gradient-to-b from-blue-900 to-black border border-blue-500/30", isReal: false },
   { id: "crypto-1",  category: "crypto",       bgClass: "bg-gradient-to-r from-yellow-900 to-black",                      isReal: false },
   { id: "social-1",  category: "social",       bgClass: "bg-gradient-to-br from-pink-600 to-orange-600",                  isReal: false },
-  { id: "gaming-2",  category: "gaming",       bgClass: "bg-gradient-to-bl from-red-900 to-black",                        isReal: false },
+  { id: "challenge-2",  category: "challenge",       bgClass: "bg-gradient-to-bl from-red-900 to-black",                        isReal: false },
 ];
 
 export const filterCategories = [
   { label: "All",           value: "all" },
   { label: "Make Money",    value: "money" },
-  { label: "Gaming",        value: "gaming" },
+  { label: "Challenge", value: "challenge" },
   { label: "Tech/AI",       value: "tech" },
   { label: "Crypto/Web3",   value: "crypto" },
   { label: "Social Growth", value: "social" },

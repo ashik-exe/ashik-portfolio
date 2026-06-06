@@ -5,6 +5,7 @@ export default function FullscreenViewer({ currentIndex, onClose, onNext, onPrev
   const isOpen = currentIndex !== null;
   const viewerRef = useRef(null);
 
+
   // Keyboard navigation
   useEffect(() => {
     if (!isOpen) return;
