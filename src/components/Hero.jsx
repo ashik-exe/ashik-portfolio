@@ -1,4 +1,5 @@
 import ShapeGrid from './ShapeGrid';
+
 export default function Hero({ onHireMe }) {
   return (
     <section
@@ -6,18 +7,17 @@ export default function Hero({ onHireMe }) {
       className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
     >
       <div className="absolute inset-0 opacity-30">
+        <ShapeGrid
+          speed={0.5}
+          squareSize={40}
+          direction="diagonal"
+          borderColor="#2F293A"
+          hoverFillColor="#914242"
+          shape="square"
+          hoverTrailAmount={0}
+        />
+      </div>
 
-  <ShapeGrid
-    speed={0.5}
-    squareSize={40}
-    direction="diagonal"
-    borderColor="#2F293A"
-    hoverFillColor="#914242"
-    shape="square"
-    hoverTrailAmount={0}
-  />
-
-</div>
       {/* Technical Grid */}
       <div className="absolute inset-0 tech-grid opacity-40 [mask-image:radial-gradient(ellipse_65%_65%_at_50%_45%,black_15%,transparent_100%)]" />
 
@@ -41,6 +41,18 @@ export default function Hero({ onHireMe }) {
 
       {/* Content */}
       <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+        
+        {/* Live Indicator added here */}
+        <div className="flex items-center justify-center gap-2 mb-6">
+          <span className="relative flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          </span>
+          <span className="text-[10px] uppercase tracking-[0.2em] text-green-400 font-bold">
+            Available for Work
+          </span>
+        </div>
+
         <h2 className="text-accentGold font-bold tracking-widest uppercase mb-4 text-sm md:text-base">
           Stand out in the feed
         </h2>

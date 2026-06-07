@@ -1,31 +1,45 @@
-import { tools } from "../data/thumbnails";
+import { motion } from "framer-motion";
+
+// ফাইলগুলো ইমপোর্ট করুন
+import photoshopIcon from "../assets/icons/photoshop.svg";
+import figmaIcon from "../assets/icons/figma.svg";
+import canvaIcon from "../assets/icons/canva.svg";
+
+const tools = [
+  { name: "Photoshop", icon: photoshopIcon },
+  { name: "Figma", icon: figmaIcon },
+  { name: "Canva", icon: canvaIcon },
+];
 
 export default function Tools() {
   return (
-    <section
-      id="tools"
-      className="py-16 bg-[#111] border-y border-white/5 overflow-hidden"
-    >
-      <div className="max-w-5xl mx-auto px-6 text-center">
-        <p className="text-sm text-gray-500 font-bold uppercase tracking-widest mb-8">
-          Built With Professional Tools
+    <section className="py-20 border-t border-white/5 bg-[#050505] relative">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500 mb-10">
+          Built with Professional Tools
         </p>
-
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-80">
-          {tools.map((tool) => (
-            <div
+        
+        <div className="flex flex-wrap justify-center gap-4">
+          {tools.map((tool, index) => (
+            <motion.div
               key={tool.name}
-              className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110 cursor-default"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              className="group flex items-center gap-3 px-6 py-3 bg-white/[0.03] border border-white/5 rounded-full hover:border-primaryRed/50 hover:bg-white/[0.06] transition-all duration-300 cursor-default"
             >
-              <img
-                src={tool.src}
-                alt={tool.alt}
-                className="w-10 h-10 object-contain"
-                loading="lazy"
-                referrerPolicy="no-referrer"
+              {/* Image tag ব্যবহার করে SVG লোড করা */}
+              <img 
+                src={tool.icon} 
+                alt={tool.name} 
+                className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" 
               />
-              <span className="font-bold text-lg">{tool.name}</span>
-            </div>
+              
+              <span className="text-xs font-bold text-gray-400 tracking-wider group-hover:text-white transition-colors">
+                {tool.name}
+              </span>
+            </motion.div>
           ))}
         </div>
       </div>

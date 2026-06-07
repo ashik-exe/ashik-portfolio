@@ -1,48 +1,58 @@
-import { processSteps } from "../data/thumbnails";
+import { motion } from "framer-motion";
+import { BrainCircuit, Lightbulb, Palette, Rocket } from "lucide-react";
+
+const steps = [
+  { id: "01", title: "Understand Topic", text: "I analyze your video, title, and target audience to find the core message and emotional trigger.", icon: <BrainCircuit size={28} /> },
+  { id: "02", title: "Create Hook", text: "Brainstorming visual hooks that complement the title without repeating it, creating a curiosity gap.", icon: <Lightbulb size={28} /> },
+  { id: "03", title: "Design Layout", text: "Drafting compositions using the rule of thirds, high-contrast colors, and readable typography.", icon: <Palette size={28} /> },
+  { id: "04", title: "Optimize & Deliver", text: "Testing against UI elements (timestamps, mobile view) to ensure perfect visibility and maximum CTR.", icon: <Rocket size={28} /> },
+];
 
 export default function Process() {
   return (
-    <section
-      id="process"
-      className="py-24 bg-bgDark border-t border-white/5 relative"
-    >
-      <div className="w-full max-w-[1600px] mx-auto px-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black mb-4 uppercase">
+    <section className="py-32 bg-[#050505] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* Heading */}
+        <div className="text-center mb-20">
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="text-primaryRed font-bold uppercase tracking-[0.3em] text-[10px] mb-4">
+            Workflow
+          </motion.p>
+          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tight text-white mb-6">
             My Process
           </h2>
-          <div className="w-24 h-1 bg-primaryRed mx-auto mb-8" />
         </div>
 
+        {/* Steps Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {processSteps.map((step) => (
-            <div
-              key={step.number}
-              className={`bg-panelDark border p-8 rounded-xl relative hover:-translate-y-2 transition-transform duration-300 ${
-                step.featured
-                  ? "border-primaryRed/30 shadow-[0_0_15px_rgba(255,0,0,0.1)]"
-                  : "border-white/10 hover:border-white/30"
-              }`}
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15, duration: 0.5 }}
+              whileHover={{ y: -10 }}
+              className="group relative p-8 bg-white/[0.02] border border-white/5 rounded-3xl hover:border-primaryRed/30 transition-all duration-500"
             >
-              <div
-                className={`text-6xl font-black absolute top-4 right-4 pointer-events-none ${
-                  step.featured ? "text-primaryRed/10" : "text-white/5"
-                }`}
-              >
-                {step.number}
+              {/* Step Number */}
+              <div className="absolute top-6 right-6 text-5xl font-black text-white/5 group-hover:text-primaryRed/10 transition-colors duration-500">
+                {step.id}
               </div>
-              <div
-                className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 text-xl ${
-                  step.featured
-                    ? "bg-primaryRed/20 text-primaryRed"
-                    : "bg-white/10"
-                }`}
-              >
+
+              {/* Icon */}
+              <div className="w-14 h-14 mb-8 flex items-center justify-center rounded-2xl bg-white/5 text-primaryRed group-hover:bg-primaryRed group-hover:text-white transition-all duration-300">
                 {step.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">{step.text}</p>
-            </div>
+
+              {/* Content */}
+              <h3 className="text-lg font-bold text-white mb-3 tracking-wide">{step.title}</h3>
+              <p className="text-[13px] text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                {step.text}
+              </p>
+
+              {/* Hover Glow */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primaryRed/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </motion.div>
           ))}
         </div>
       </div>

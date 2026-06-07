@@ -1,5 +1,4 @@
 import { useState } from "react";
-import PortfolioCard from "./PortfolioCard";
 import { thumbnails, mockItems, filterCategories } from "../data/thumbnails";
 
 export default function Portfolio({ onOpenImage }) {
@@ -7,16 +6,12 @@ export default function Portfolio({ onOpenImage }) {
 
   // Combine real + mock items preserving original order
   const allItems = [
-    thumbnails[0], // documentary
-    thumbnails[1], // documentary
-    thumbnails[2], // money
-    thumbnails[3], // money
-    thumbnails[4], // challenge
-    mockItems[0],  // challenge
-    mockItems[1],  // tech
-    mockItems[2],  // crypto
-    mockItems[3],  // social
-    mockItems[4],  // challenge
+    thumbnails[0],
+    thumbnails[1],
+    thumbnails[2],
+    thumbnails[3],
+    thumbnails[4],
+    ...mockItems,
   ];
 
   const visible = allItems.filter(
@@ -28,24 +23,24 @@ export default function Portfolio({ onOpenImage }) {
       id="portfolio"
       className="py-24 bg-bgDark border-t border-white/5 relative"
     >
-      <div className="w-full px-20 2xl:px-32">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black mb-4 uppercase">
-            My Work
-          </h2>
-          <div className="w-24 h-1 bg-primaryRed mx-auto mb-8" />
+      <div className="w-full px-6 md:px-20 2xl:px-32">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 gap-8">
+          <div>
+            <span className="text-[11px] tracking-[4px] uppercase text-primaryRed mb-4 block">
+              Full Portfolio
+            </span>
+            <h2 className="text-4xl md:text-6xl font-black uppercase mb-0 leading-none">
+              All Work
+            </h2>
+          </div>
 
           {/* Category Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="gallery-filters">
             {filterCategories.map((cat) => (
               <button
                 key={cat.value}
                 onClick={() => setActiveFilter(cat.value)}
-                className={`px-5 py-2 rounded-full border text-sm font-bold transition-colors ${
-                  activeFilter === cat.value
-                    ? "bg-white text-black border-white"
-                    : "border-white/20 text-white hover:bg-white hover:text-black"
-                }`}
+                className={`filter-btn ${activeFilter === cat.value ? "active" : ""}`}
               >
                 {cat.label}
               </button>
@@ -53,23 +48,28 @@ export default function Portfolio({ onOpenImage }) {
           </div>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 gap-8">
-          {visible.map((item) => (
-            <div
-              key={item.id}
-              style={{
-                opacity: 1,
-                transform: "scale(1)",
-                transition: "opacity 0.3s ease, transform 0.3s ease",
-              }}
-            >
-              <PortfolioCard
-  item={item}
-  onOpen={() => onOpenImage(item.id)}
-/>
-            </div>
-          ))}
+        {/* 3-Column Bento Grid */}
+        <div className="gallery-grid">
+          {visible.map((item, index) => {
+            // Generate dynamic SVG for mock items to match the premium design
+            const palette = item.palette || ["#0d0d0d", "#1a0505"];
+            const color = item.color || "#E8192C";
+            const svgSrc = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1280' height='720'><defs><linearGradient id='g${index}' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='${encodeURIComponent(palette[0])}'/><stop offset='100%25' stop-color='${encodeURIComponent(palette[1])}'/></linearGradient></defs><rect fill='url(%23g${index})' width='1280' height='720'/><text x='640' y='320' font-family='Georgia' font-size='52' fill='${encodeURIComponent(color)}' text-anchor='middle' font-weight='bold'>${encodeURIComponent((item.label || item.category).toUpperCase())}</text><text x='640' y='430' font-family='Arial' font-size='24' fill='%23888' text-anchor='middle'>Place your thumbnail here</text></svg>`;
+
+            return (
+              <div
+                key={item.id}
+                className="gallery-item"
+                onClick={() => onOpenImage(item.id)}
+              >
+                <img
+                  src={item.isReal ? item.image : svgSrc}
+                  alt={item.alt || item.label}
+                  loading="lazy"
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
