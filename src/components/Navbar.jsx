@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-// ১. ইমপোর্ট সবসময় ফাইলের উপরে হবে
-// Navbar.jsx ফাইলের একদম উপরে এই লাইনটি দিন:
 import Logo from "../assets/icons/favicon.svg";
-
 
 export default function Navbar({ onHireMe, onContactOptions }) {
   const [hidden, setHidden] = useState(false);
@@ -11,17 +8,24 @@ export default function Navbar({ onHireMe, onContactOptions }) {
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    // 1. Hero section-এর উপরে থাকলে navbar hide হবে না
-    if (latest < 0) {
+    const previous = scrollY.getPrevious();
+    const direction = latest - previous;
+
+    // ১. একদম উপরে থাকলে Navbar সবসময় দেখাবে
+    if (latest < 50) {
       setIsTop(true);
-      setHidden(false); 
-    } else {
-      setIsTop(false);
-      // 2. Scroll down করলে hide, scroll up করলে show
-      if (latest > scrollY.getPrevious() && latest > 100) {
-        setHidden(true);
+      setHidden(false);
+      return;
+    }
+
+    setIsTop(false);
+
+    // ২. স্ক্রল মুভমেন্ট যদি ৩০ পিক্সেলের বেশি হয়, শুধু তখনই হাইড/শো করবে
+    if (Math.abs(direction) > 0) {
+      if (direction > 0) {
+        setHidden(true); // Scroll Down করলে Hide
       } else {
-        setHidden(false);
+        setHidden(true); // Scroll Up করলে Show
       }
     }
   });
@@ -39,22 +43,18 @@ export default function Navbar({ onHireMe, onContactOptions }) {
       <motion.div
         animate={{ 
           width: "92%",
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
-          backdropFilter: "blur(16px)",
+          backgroundColor: isTop ? "rgba(0, 0, 0, 0)" : "rgba(0, 0, 0, 0.7)", // উপরে থাকলে ট্রান্সপারেন্ট
+          backdropFilter: isTop ? "blur(0px)" : "blur(16px)",
         }}
         className="border border-white/10 rounded-full flex items-center justify-between shadow-2xl px-8 py-4 pointer-events-auto"
       >
-              {/* লোগো, টেক্সট এবং হলুদ ডট সেকশন */}
-<div className="flex items-center gap-0.1"> 
-  <img src={Logo} alt="Ashik Artistry Logo" className="h-8 w-auto" />
-  
-  {/* এখানে mt-1 যোগ করা হয়েছে লেখাটিকে নিচে নামানোর জন্য */}
-  <span className="text-white font-bold text-[20px] tracking-[0.1em] mt-2">
-    shik Artistry
-  </span>
-  
-  <div className="w-2 h-2 bg-yellow-400 rounded-full" />
-</div>
+        <div className="flex items-center gap-0.1"> 
+          <img src={Logo} alt="Ashik Artistry Logo" className="h-8 w-auto" />
+          <span className="text-white font-bold text-[20px] tracking-[0.1em] mt-2">
+            shik Artistry
+          </span>
+          <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+        </div>
 
         {/* Links */}
         <div className="hidden lg:flex items-center gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
@@ -70,7 +70,6 @@ export default function Navbar({ onHireMe, onContactOptions }) {
           ))}
         </div>
         
-
         {/* Actions */}
         <div className="flex items-center gap-3">
           <button onClick={onContactOptions} className="text-[10px] font-bold uppercase tracking-[0.1em] text-white/50 hover:text-white transition-colors mr-2">
@@ -88,4 +87,4 @@ export default function Navbar({ onHireMe, onContactOptions }) {
       </motion.div>
     </motion.nav>
   );
-} 
+}
