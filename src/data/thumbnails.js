@@ -1,8 +1,8 @@
-import thumb1 from "../assets/thumb1.jpg";
-import thumb2 from "../assets/thumb2.jpg";
-import thumb3 from "../assets/thumb3.png";
-import thumb4 from "../assets/thumb4.jpg";
-import thumb5 from "../assets/thumb5.jpg";
+import thumb1 from "../assets/thumb1.webp";
+import thumb2 from "../assets/thumb2.webp";
+import thumb3 from "../assets/thumb3.webp";
+import thumb4 from "../assets/thumb4.webp";
+import thumb5 from "../assets/thumb5.webp";
 
 export const thumbnails = [
   { id: 0, image: thumb1, category: "doc", alt: "The Final Collapse Documentary Thumbnail", isReal: true },

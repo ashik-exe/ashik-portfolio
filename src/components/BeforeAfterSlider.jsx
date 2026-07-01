@@ -1,5 +1,5 @@
-import beforeImg from "../assets/before.jpg";
-import afterImg from "../assets/thumb4.jpg";
+import beforeImg from "../assets/before.webp";
+import afterImg from "../assets/thumb4.webp";
 import { useState } from "react";
 
 export default function BeforeAfterSlider() {
